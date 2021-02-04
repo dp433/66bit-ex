@@ -1,0 +1,35 @@
+﻿@model IEnumerable<FootballersDirectory.Models.Footballer>
+@{
+		ViewBag.Title = "Список игроков";
+		Layout = "_Layout";
+	}
+
+<form>
+	<table class="table table-striped" id="mytable">
+		<thead class="">
+			<tr>
+				<th>Имя</th>
+				<th>Фамилия</th>
+				<th>Пол</th>
+				<th>Дата рождения</th>
+				<th>Команда</th>
+				<th>Страна</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var player in Model)
+			{
+			<tr>
+				<td>@player.Name</td>
+				<td>@player.Surname</td>
+				<td>@player.Sex</td>
+				<td>@player.BirthDate.ToString("dd/MM/yyyy")</td>
+				<td>@player.TeamName</td>
+				<td>@player.Country</td>
+				<td><a asp-action="Edit" asp-controller="Home" asp-route-id="@player.Id">Редактировать</a></td>
+</tr>
+			}
+		</tbody>
+	</table>
+</form>
